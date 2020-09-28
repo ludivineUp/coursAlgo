@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Pony.h"
+#include "Rationnelle.h"
 
 using namespace std;
 
@@ -89,6 +90,15 @@ int main()
     licorne->affiche();
 
     delete licorne;
+
+    //exo rationnelle
+    Rationnelle *rat = new Rationnelle(7,4);
+    rat->affiche();
+    cout << rat->partieReelle()<<endl;
+    Rationnelle inverse = rat->inverse();
+    inverse.affiche();
+
+    delete rat;
 
     // Pourquoi le main retourne un entier?
     // car c'est le code erreur du programme, 0 ok, 1 crash, 3 telle erreur...

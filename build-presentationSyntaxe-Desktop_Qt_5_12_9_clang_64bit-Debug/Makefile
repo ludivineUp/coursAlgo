@@ -53,9 +53,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../presentationSyntaxe/main.cpp \
-		../presentationSyntaxe/pony.cpp 
+		../presentationSyntaxe/pony.cpp \
+		../presentationSyntaxe/rationnelle.cpp 
 OBJECTS       = main.o \
-		pony.o
+		pony.o \
+		rationnelle.o
 DIST          = /Users/ludivine/Qt5.12.9/5.12.9/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/ludivine/Qt5.12.9/5.12.9/clang_64/mkspecs/qdevice.pri \
 		/Users/ludivine/Qt5.12.9/5.12.9/clang_64/mkspecs/features/device_config.prf \
@@ -243,8 +245,10 @@ DIST          = /Users/ludivine/Qt5.12.9/5.12.9/clang_64/mkspecs/features/spec_p
 		/Users/ludivine/Qt5.12.9/5.12.9/clang_64/mkspecs/features/exceptions.prf \
 		/Users/ludivine/Qt5.12.9/5.12.9/clang_64/mkspecs/features/yacc.prf \
 		/Users/ludivine/Qt5.12.9/5.12.9/clang_64/mkspecs/features/lex.prf \
-		../presentationSyntaxe/presentationSyntaxe.pro pony.h ../presentationSyntaxe/main.cpp \
-		../presentationSyntaxe/pony.cpp
+		../presentationSyntaxe/presentationSyntaxe.pro pony.h \
+		rationnelle.h ../presentationSyntaxe/main.cpp \
+		../presentationSyntaxe/pony.cpp \
+		../presentationSyntaxe/rationnelle.cpp
 QMAKE_TARGET  = presentationSyntaxe
 DESTDIR       = 
 TARGET        = presentationSyntaxe
@@ -691,11 +695,15 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../presentationSyntaxe/main.cpp ../presentationSyntaxe/Pony.h
+main.o: ../presentationSyntaxe/main.cpp ../presentationSyntaxe/Pony.h \
+		../presentationSyntaxe/Rationnelle.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../presentationSyntaxe/main.cpp
 
 pony.o: ../presentationSyntaxe/pony.cpp ../presentationSyntaxe/pony.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pony.o ../presentationSyntaxe/pony.cpp
+
+rationnelle.o: ../presentationSyntaxe/rationnelle.cpp ../presentationSyntaxe/rationnelle.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rationnelle.o ../presentationSyntaxe/rationnelle.cpp
 
 ####### Install
 

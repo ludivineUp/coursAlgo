@@ -5,7 +5,9 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp \
-        pony.cpp
+        pony.cpp \
+        rationnelle.cpp
 
 HEADERS += \
-    pony.h
+    pony.h \
+    rationnelle.h
