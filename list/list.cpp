@@ -53,7 +53,7 @@ int List::size(){
 
 }
 void List::insert(int val, int position){
-    int cpt = 0;
+    int cpt = 1;
     Cell * current = cell;
     while(cpt < position ){
         current = current->next;
@@ -65,7 +65,7 @@ void List::insert(int val, int position){
     current->next = newCell;
 }
 void List::deleteCell(int position){
-    int cpt = 0;
+    int cpt = 1;
     Cell * current = cell;
     while(cpt != position){
         current = current->next;
@@ -73,17 +73,19 @@ void List::deleteCell(int position){
     }
     Cell *toDel = current->next;
     current->next = current->next->next;
-    // effacer la cellule en mémoire avec delete.
-
+    toDel->next = nullptr;
+    delete toDel;
 }
 void List::clear(){
     Cell * current = cell;
     while(current != nullptr){
-        while(current->next != nullptr){
+        while(current->next->next != nullptr){
             current = current->next;
         }
-        delete current;
+        delete current->next;
+        current->next=nullptr;
+        // on doit passer au début
         current = cell;
     }
-
+    delete cell;
 }
