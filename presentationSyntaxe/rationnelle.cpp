@@ -3,7 +3,7 @@
 Rationnelle::Rationnelle()
 {
     n = 1;
-    d= 1;
+    d = 1;
 }
 Rationnelle::Rationnelle(int i, int j):n(i),d(j){
     if(d < 0){
