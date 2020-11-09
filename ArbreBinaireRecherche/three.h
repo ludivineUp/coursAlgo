@@ -23,6 +23,9 @@ public:
     void prefixe(Node* current);
     void postfixe(Node* current);
     void deleteValue(int value);
+private :
+    // va stocker les values à afficher dans l'ordre
+    int* tabForPrint;
 };
 
 #endif // THREE_H
