@@ -23,5 +23,19 @@ int main()
 
     t->printLargeur();
 
+    cout<<"60 : "<<t->find(t->root, 60)<<endl;
+    cout<<"100 : "<<t->find(t->root, 100)<<endl;
+    cout<<"5 : "<<t->find(t->root, 5)<<endl;
+
+    cout<<"Taille root "<<t->nbNode(t->root)<<endl;
+    cout<<"Taille root "<<t->nbNode(nullptr)<<endl;
+
+    string s = t->compare(t->root, t->root)?"VRAI":"FAUX";
+    cout<<"compare "<< s <<endl;
+
+
+    cout<<"On efface l'arbre pour éviter les fuites mémoires"<<endl;
+    delete t;
+
     cout<<"END -- Arbre binaire de recherche"<<endl;
 }

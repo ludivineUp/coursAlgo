@@ -11,7 +11,16 @@ SearchBinaryThree::SearchBinaryThree(int rootValue)
     root->value = rootValue;
 }
 SearchBinaryThree::~SearchBinaryThree(){
-
+    deleteNode(root);
+}
+void SearchBinaryThree::deleteNode(Node* current){
+    if(current == nullptr){
+        return; // prorpe en c++
+    }
+    deleteNode(current->left);
+    deleteNode(current->right);
+    cout<<"on delete "<<current->value<< endl;
+    delete current;
 }
 
 void SearchBinaryThree::insert(int value, Node* current){
@@ -35,22 +44,27 @@ void SearchBinaryThree::insert(int value, Node* current){
         }
     }
 }
-Node* SearchBinaryThree::find(Node* current, int value){
-    Node *res;
-    if(current->value == value){
-        res = current;
-        return res;}
-    if(current->left != nullptr){
-        cout<<"GAUCHE "<<current->left->value<<endl;
-        res = find(current->left,value);
-        if(res != nullptr && res->value == value){
-            return res;}}
-    if(current->right != nullptr){
-        cout<<"DROITE "<<current->right->value<<endl;
-        res = find(current->right,value);
-        if(res != nullptr && res->value == value){
-            return res;}}
-    return res;
+bool SearchBinaryThree::find(Node* current, int value){
+    if(current == nullptr){
+        return false;
+    }else{
+        if(current->value == value){
+            return true;
+        }else{
+            if(current->value > value){
+                return find(current->left,value);
+            }else{
+                return find(current->right,value);
+            }
+        }
+    }
+}
+int SearchBinaryThree::nbNode(Node* current){
+    if(current == nullptr){
+        return 0;
+    }else{
+        return 1 + nbNode(current->left) + nbNode(current->right);
+    }
 }
 void SearchBinaryThree::printLargeur(){largeur(root,"");}
 void SearchBinaryThree::largeur(Node *tree, string tab)
@@ -63,7 +77,6 @@ void SearchBinaryThree::largeur(Node *tree, string tab)
         if(tree->right != nullptr){
             cout<<tab<< "Value right = " << tree->right->value << endl;
         }
-
         if(tree->left != nullptr){
             largeur(tree->left,tab+"\t");
         }
@@ -73,4 +86,18 @@ void SearchBinaryThree::largeur(Node *tree, string tab)
 
     }
 }
-
+bool SearchBinaryThree::compare(Node* root1, Node* root2){
+    if(root1 == nullptr){
+        return root2 == nullptr;
+    }else if(root2 != nullptr){
+        return (root1->value == root2->value)
+                && compare(root1->left, root2->left)
+                && compare(root1->right, root2->right);
+    }else{
+        return false;
+    }
+}
+void SearchBinaryThree::infixe(Node* current){}
+void SearchBinaryThree::prefixe(Node* current){}
+void SearchBinaryThree::postfixe(Node* current){}
+void SearchBinaryThree::deleteValue(int value){}

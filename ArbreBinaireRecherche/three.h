@@ -15,7 +15,14 @@ public:
     void insert(int value, Node* current);
     void printLargeur();
     void largeur(Node* current, string tab);
-    Node* find(Node* current, int value);
+    bool find(Node* current, int value);
+    int nbNode(Node* current);
+    void deleteNode(Node* current);
+    bool compare(Node* root1, Node* root2);
+    void infixe(Node* current);
+    void prefixe(Node* current);
+    void postfixe(Node* current);
+    void deleteValue(int value);
 };
 
 #endif // THREE_H
