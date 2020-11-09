@@ -97,7 +97,3 @@ bool SearchBinaryThree::compare(Node* root1, Node* root2){
         return false;
     }
 }
-void SearchBinaryThree::infixe(Node* current){}
-void SearchBinaryThree::prefixe(Node* current){}
-void SearchBinaryThree::postfixe(Node* current){}
-void SearchBinaryThree::deleteValue(int value){}

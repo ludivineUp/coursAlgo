@@ -33,6 +33,10 @@ int main()
     string s = t->compare(t->root, t->root)?"VRAI":"FAUX";
     cout<<"compare "<< s <<endl;
 
+    cout<< "Infixe "<<t->infixe(t->root)<<endl;
+    cout<< "Postfixe "<<t->postfixe(t->root)<<endl;
+    cout<< "Prefixe "<<t->prefixe(t->root)<<endl;
+
 
     cout<<"On efface l'arbre pour éviter les fuites mémoires"<<endl;
     delete t;
