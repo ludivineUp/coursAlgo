@@ -20,7 +20,7 @@ public:
     void deleteNode(Node* current);
     bool compare(Node* root1, Node* root2);
     // ssArbreG puis la racine puis le SSarbre D
-    string infixe(Node* current);
+    string infixe(Node* current);   // ou ordre croissant
     // racine puis ssarbre G puis le ssArbre D
     string prefixe(Node* current);
     // ssArbre G, puis le ssArbre D, puis la racine
