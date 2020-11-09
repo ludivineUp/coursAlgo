@@ -13,6 +13,7 @@ Three::Three(int rootValue)
 Three::~Three(){
 
 }
+
 void Three::insert(int value, int father){
 
     cout<<"on insere "<<value<<endl;
@@ -38,50 +39,43 @@ Node* Three::find(Node* current, int value){
         return res;
     }
     if(current->left != nullptr){
-        cout<<"GAUCHE"<<endl;
+        cout<<"GAUCHE "<<current->left->value<<endl;
         res = find(current->left,value);
+        if(res != nullptr && res->value == value){
+            return res;
+        }
     }
     if(current->right != nullptr){
-        cout<<"DROITE"<<endl;
+        cout<<"DROITE "<<current->right->value<<endl;
         res = find(current->right,value);
-    } else{
-            res = nullptr;
+        if(res != nullptr && res->value == value){
+            return res;
+        }
     }
     return res;
 }
-/*
-Fonction largeur(nœud)
 
-Afficher (valeur)
-
-Si le nœud est une feuille
-
-    STOP
-
-Sinon Pour tous les fils
-
-    Largeur(fils)
-*/
 void Three::printLargeur(){
-    cout<<"Affichage de l'arbre de racine "<<root->value<<endl;
-    cout<<""<<root->value<< "   "<<endl;
+    largeur(root,"");
+}
+void Three::largeur(Node *tree, string tab)
+{
+    if(tree != nullptr && (tree->left != nullptr || tree->right != nullptr)){
+        cout<<tab<< "Value = " << tree->value << endl;
+        if(tree->left != nullptr){
+            cout<<tab<< "Value left = " << tree->left->value << endl;
+        }
+        if(tree->right != nullptr){
+            cout<<tab<< "Value right = " << tree->right->value << endl;
+        }
 
-    Node * current = root;
-    // affiche les fils
-    //cout<<""<<current->left->value<< "   "<<endl;
-    //cout<<""<<current->right->value<< "   "<<endl;
-    while(current != nullptr){
-        printLargeurNodeLeft(current);
-        printLargeurNodeRight(current);
-        current = current->left;
+        if(tree->left != nullptr){
+            largeur(tree->left,tab+"\t");
+        }
+        if(tree->right != nullptr){
+            largeur(tree->right,tab+"\t");
+        }
+
     }
-
 }
-void Three::printLargeurNodeLeft(Node* current){
-    cout<<""<<current->left->value<< "   "<<endl;;
 
-}
-void Three::printLargeurNodeRight(Node* current){
-    cout<<""<<current->right->value<< "   "<<endl;;
-
-}

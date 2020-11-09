@@ -1,6 +1,7 @@
 #ifndef THREE_H
 #define THREE_H
 #include <iostream>
+#include <string>
 using namespace std;
 
 #include "node.h"
@@ -13,8 +14,7 @@ public:
     Node* root;
     void insert(int value, int father);
     void printLargeur();
-    void printLargeurNodeLeft(Node* current);
-    void printLargeurNodeRight(Node* current);
+    void largeur(Node* current, string tab);
 private:
         Node* find(Node* current, int value);
 };

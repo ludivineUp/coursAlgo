@@ -11,6 +11,7 @@ int main()
     t->insert(4,2);
     t->insert(5,2);
     t->insert(7,3);
+    t->insert(6,5);
     //t->printLargeurNode(t->root);
 
     t->printLargeur();
