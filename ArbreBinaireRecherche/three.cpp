@@ -5,32 +5,37 @@
 
 using namespace  std;
 
-Three::Three(int rootValue)
+SearchBinaryThree::SearchBinaryThree(int rootValue)
 {
     root = new Node();
     root->value = rootValue;
 }
-Three::~Three(){
+SearchBinaryThree::~SearchBinaryThree(){
 
 }
 
-void Three::insert(int value, int father){
-    cout<<"on insere "<<value<<endl;
-    Node* p_father = find(root, father);
-    if(p_father != nullptr){
-        cout<<"on insere avec papa "<<p_father->value<<endl;
-        if(p_father->left == nullptr){
-            cout<<"a gauche"<<endl;
-            p_father->left = new Node();
-            p_father->left->value = value;
+void SearchBinaryThree::insert(int value, Node* current){
+    cout<<"insert "<<value<<" avec dep = "<<current->value<<endl;
+    if(current == nullptr){
+        current = new  Node();
+        current->value = value;
+    }else{
+        if(value < current->value){
+            if(current-> left == nullptr){
+                current->left = new Node();
+                current->left->value = value;
+            }else
+                insert(value, current->left);
         }else{
-            cout<<"a droite"<<endl;
-            p_father->right = new Node();
-            p_father->right->value = value;
+            if(current-> right == nullptr){
+                current->right = new Node();
+                current->right->value = value;
+            }else
+                insert(value, current->right);
         }
     }
 }
-Node* Three::find(Node* current, int value){
+Node* SearchBinaryThree::find(Node* current, int value){
     Node *res;
     if(current->value == value){
         res = current;
@@ -47,8 +52,8 @@ Node* Three::find(Node* current, int value){
             return res;}}
     return res;
 }
-void Three::printLargeur(){largeur(root,"");}
-void Three::largeur(Node *tree, string tab)
+void SearchBinaryThree::printLargeur(){largeur(root,"");}
+void SearchBinaryThree::largeur(Node *tree, string tab)
 {
     if(tree != nullptr && (tree->left != nullptr || tree->right != nullptr)){
         cout<<tab<< "Value = " << tree->value << endl;
