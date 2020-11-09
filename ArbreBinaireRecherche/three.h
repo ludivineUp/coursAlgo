@@ -25,7 +25,13 @@ public:
     string prefixe(Node* current);
     // ssArbre G, puis le ssArbre D, puis la racine
     string postfixe(Node* current);
-    string orderDesc(Node*current);
+    void orderDesc(Node*current);
+    /*
+     * Si le noeud n'a pas de fils aucun souci
+     * s'il a un fils, son fils prend sa place
+     * s'il a deux fils, le plus petit fils prend sa place
+     * et le plus grand deivent son fils à droite
+     */
     void deleteValue(int value);
 };
 

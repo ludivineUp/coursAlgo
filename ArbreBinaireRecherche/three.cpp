@@ -102,17 +102,29 @@ string SearchBinaryThree::infixe(Node* current){
     if(current == nullptr){
         return "";
     }else{
-        return infixe(current->left) + " " + to_string(current->value) + " " + infixe(current->right);
+        return infixe(current->left) + " " + to_string(current->value)
+                + " " + infixe(current->right);
     }
 }
 string SearchBinaryThree::prefixe(Node* current){if(current == nullptr){
         return "";
     }else{
-        return to_string(current->value) + " " + prefixe(current->left) + " " + prefixe(current->right);
+        return to_string(current->value) + " " + prefixe(current->left)
+                + " " + prefixe(current->right);
     }}
-string SearchBinaryThree::postfixe(Node* current){if(current == nullptr){
+string SearchBinaryThree::postfixe(Node* current){
+    if(current == nullptr){
         return "";
     }else{
-        return postfixe(current->left) + " " + postfixe(current->right) + " " + to_string(current->value);
+        return postfixe(current->left) + " " + postfixe(current->right)
+                + " " + to_string(current->value);
     }}
+void SearchBinaryThree::orderDesc(Node*current){
+    if(current != nullptr){
+        orderDesc(current->right);
+        cout << current->value << " ";
+        orderDesc(current->left);
+    }
+}
+
 void SearchBinaryThree::deleteValue(int value){}
